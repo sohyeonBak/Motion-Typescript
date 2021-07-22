@@ -24,11 +24,13 @@ export class PageItemComponent extends BaseComponent<HTMLElement> implements Sec
               <button class="close">&times;</button>
             </div>
           </li>`)
+
     const closeBtn = this.element.querySelector('.close')! as HTMLButtonElement;
     closeBtn.onclick = () => {
       this.closeListener && this.closeListener()
     }
   }
+  
   addChild(child: Component) {
     const container = this.element.querySelector('.page-item__body')! as HTMLElement;
     child.attachTo(container);
