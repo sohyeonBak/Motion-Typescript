@@ -2,11 +2,11 @@ import { BaseComponent } from './../../component.js';
 export class VideoComponent extends BaseComponent<HTMLElement> {
   constructor(title: string, url: string) {
     super(`<section class="video">
-    <div class="video__holder"><iframe width="560" height="315" class="video__thumbnail" allowfullscreen></iframe></div>
-    <h2 class="video__title"></h2>
+    <div class="video__player"><iframe class="video__iframe"></iframe></div>
+    <h3 class="page-item__title video__title"></h3>
   </section>`)
 
-  const videoElement = this.element.querySelector('.video__thumbnail')! as HTMLIFrameElement;
+  const videoElement = this.element.querySelector('.video__iframe')! as HTMLIFrameElement;
   videoElement.src = this.convertToEmbeddedURL(url);
   videoElement.title = title;
 
