@@ -1,6 +1,8 @@
+
 export interface Component {
   attachTo(parent: HTMLElement, position?: InsertPosition): void;
   removeFrom(parent: HTMLElement): void;
+  attach(component: Component, position?: InsertPosition): void;
 }
 
 export class BaseComponent<T extends HTMLElement> implements Component {
@@ -21,5 +23,9 @@ export class BaseComponent<T extends HTMLElement> implements Component {
       throw new Error('Parent mist')
     }
     parent.removeChild(this.element)
+  }
+
+  attach(component: Component, position: InsertPosition = 'afterbegin') {
+    component.attachTo(this.element, position)
   }
 }
